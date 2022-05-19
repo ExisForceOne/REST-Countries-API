@@ -3,3 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-color: hsl(0, 0%, 98%);
+}
+
+button {
+    border: none;
+    outline: none;
+    font-size: inherit;
+    font-family: inherit;
+    background-color: inherit;
+    cursor: pointer;
+    color: inherit;
+}
