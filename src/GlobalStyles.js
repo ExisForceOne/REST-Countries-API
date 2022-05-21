@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +13,7 @@ html {
 
 body {
     background-color: hsl(0, 0%, 98%);
+    background-color: ${({ theme }) => theme.bgcColor};
 }
 
 button {
@@ -21,3 +25,6 @@ button {
     cursor: pointer;
     color: inherit;
 }
+`;
+
+export default GlobalStyles;
