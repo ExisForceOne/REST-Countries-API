@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./GlobalStyles";
 import Header from "./components/Header/Header";
+import Nav from "./components/Nav/Nav";
 
 const lightTheme = {
   elementsColor: "white",
@@ -26,7 +27,8 @@ function App() {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <>
         <GlobalStyles />
-        <Header toogleTheme={toogleTheme} />;
+        <Header toogleTheme={toogleTheme} />
+        <Nav />
       </>
     </ThemeProvider>
   );

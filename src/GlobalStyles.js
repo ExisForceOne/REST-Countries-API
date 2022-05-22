@@ -25,6 +25,19 @@ button {
     cursor: pointer;
     color: inherit;
 }
+
+input,select,option{
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+
+input::placeholder{
+    color: inherit;
+}
+
 `;
 
 export default GlobalStyles;

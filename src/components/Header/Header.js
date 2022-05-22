@@ -32,10 +32,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-const StyledMoon = styled(Moon)`
-  height: 20px;
-`;
-
 export default function Header(props) {
   return (
     <StyledHeader>
@@ -46,7 +42,7 @@ export default function Header(props) {
             props.toogleTheme();
           }}
         >
-          <StyledMoon />
+          <Moon size={20} />
           Dark Mode
         </button>
       </Wrapper>
