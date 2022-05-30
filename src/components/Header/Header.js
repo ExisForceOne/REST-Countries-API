@@ -8,8 +8,7 @@ const StyledHeader = styled.header`
   padding: 50px 0;
 
   @media (min-width: 750px) {
-    padding: 20px 0;
-    font-size: 0.8rem;
+    padding: 30px 0;
   }
 
   h1 {
@@ -27,7 +26,7 @@ const StyledHeader = styled.header`
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  width: min(1000px, 90%);
+  width: min(1300px, 90%);
   display: flex;
   justify-content: space-between;
 `;
