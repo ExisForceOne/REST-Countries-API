@@ -3,6 +3,8 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./GlobalStyles";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
+import SearchBar from "./components/Searchbar/Searchbar";
+import CustomSelect from "./components/CustomSelect/CustomSelect";
 
 const lightTheme = {
   elementsColor: "white",
@@ -28,7 +30,10 @@ function App() {
       <>
         <GlobalStyles />
         <Header toogleTheme={toogleTheme} />
-        <Nav />
+        <Nav>
+          <SearchBar />
+          <CustomSelect />
+        </Nav>
       </>
     </ThemeProvider>
   );
