@@ -10,8 +10,8 @@ const Select = styled.button`
   font-weight: 600;
   padding: 25px 35px;
   max-width: 320px;
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
 
   svg {
@@ -27,8 +27,8 @@ const OptionsList = styled.ul`
   left: 0;
   right: 0;
   padding: 25px 0;
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   list-style: none;
   bottom: -10px;

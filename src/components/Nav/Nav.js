@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledNav = styled.nav`
   margin: 40px auto;
-  width: min(1300px, 90%);
+  width: ${({ theme }) => theme.wrapper};
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;

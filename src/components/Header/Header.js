@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Moon } from "@styled-icons/bootstrap/Moon";
 
 const StyledHeader = styled.header`
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
   padding: 50px 0;
@@ -26,7 +26,7 @@ const StyledHeader = styled.header`
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  width: min(1300px, 90%);
+  width: ${({ theme }) => theme.wrapper};
   display: flex;
   justify-content: space-between;
 `;

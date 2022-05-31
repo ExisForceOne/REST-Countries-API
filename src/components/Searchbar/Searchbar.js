@@ -6,15 +6,15 @@ const StyledSearchBar = styled.div`
   flex: 1;
   align-items: center;
   padding-left: 25px;
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.elementsColor};
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: ${({ theme }) => theme.boxShadow};
   max-width: 500px;
 
   input {
     padding: 25px;
     flex: 1;
-    border-radius: 8px;
+    border-radius: ${({ theme }) => theme.borderRadius};
   }
 `;
 
