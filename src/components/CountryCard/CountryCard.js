@@ -9,8 +9,7 @@ const StyledCard = styled.div`
   overflow: hidden;
   font-size: 1.4rem;
 
-  img,
-  svg {
+  img {
     max-width: 100%;
   }
 
@@ -43,20 +42,20 @@ const StyledTextContainer = styled.div`
   padding: 35px;
 `;
 
-export default function CountryCard(props) {
+export default function CountryCard({ data }) {
   return (
     <StyledCard>
-      <img src="https://flagcdn.com/de.svg" alt="flag" />
+      <img src={data.flags.svg} alt="flag" />
       <StyledTextContainer>
-        <h3>Germany</h3>
+        <h3>{data.name.common}</h3>
         <p>
-          Population: <span>81,770,900</span>
+          Population: <span>{data.population}</span>
         </p>
         <p>
-          Region: <span>Europe</span>
+          Region: <span>{data.region}</span>
         </p>
         <p>
-          Capital: <span>Berlin</span>
+          Capital: <span>{data.capital}</span>
         </p>
       </StyledTextContainer>
     </StyledCard>

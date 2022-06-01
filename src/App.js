@@ -1,32 +1,11 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "./GlobalStyles";
+import GlobalStyles from "./styles/GlobalStyles";
+import { lightTheme, darkTheme } from "./styles/Themes";
 import Header from "./components/Header/Header";
-import Nav from "./components/Nav/Nav";
-import SearchBar from "./components/Searchbar/Searchbar";
-import CustomSelect from "./components/CustomSelect/CustomSelect";
-import Home from "./components/Home/Home";
-//api https://restcountries.com/v3.1/all?fields=name,capital,population,flags,region,borders,subregion,currencies,languages,tld
-
-const lightTheme = {
-  elementsColor: "white",
-  textColor: "black",
-  bgcColor: "hsl(0, 0%, 98%)",
-  borderRadius: "8px",
-  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;",
-  wrapper: "min(1300px, 90%);",
-};
-
-const darkTheme = {
-  elementsColor: "hsl(209, 23%, 22%);",
-  textColor: "white",
-  bgcColor: "hsl(207, 26%, 17%)",
-  borderRadius: "8px",
-  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;",
-  wrapper: "min(1300px, 90%);",
-};
-
-const variables = {};
+import Home from "./views/Home/Home";
+//api for details https://restcountries.com/v3.1/all?fields=name,capital,population,flags,region,borders,subregion,currencies,languages,tld
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -36,16 +15,15 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={isDarkMode ? { ...darkTheme, ...variables } : { ...lightTheme, ...variables }}>
-      <>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <BrowserRouter>
         <GlobalStyles />
         <Header toogleTheme={toogleTheme} />
-        <Nav>
-          <SearchBar />
-          <CustomSelect />
-        </Nav>
-        <Home />
-      </>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<p>404</p>} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
