@@ -1,17 +1,12 @@
 import styled from "styled-components";
 
 const StyledCard = styled.div`
-  max-width: 420px;
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
   border-radius: ${({ theme }) => theme.borderRadius};
   overflow: hidden;
   font-size: 1.4rem;
-
-  img {
-    max-width: 100%;
-  }
 
   h3 {
     margin-bottom: 25px;
@@ -38,6 +33,18 @@ const StyledCard = styled.div`
   }
 `;
 
+const StyledFlagContainer = styled.div`
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+`;
+
 const StyledTextContainer = styled.div`
   padding: 35px;
 `;
@@ -45,7 +52,9 @@ const StyledTextContainer = styled.div`
 export default function CountryCard({ data }) {
   return (
     <StyledCard>
-      <img src={data.flags.svg} alt="flag" />
+      <StyledFlagContainer>
+        <img src={data.flags.svg} alt="flag" />
+      </StyledFlagContainer>
       <StyledTextContainer>
         <h3>{data.name.common}</h3>
         <p>

@@ -6,7 +6,7 @@ const StyledGridContainer = styled.div`
   display: grid;
   grid-gap: 55px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  justify-items: center;
+  /* justify-items: center; */
 `;
 
 export default function CountriesContainer(props) {
