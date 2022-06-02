@@ -5,6 +5,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/Themes";
 import Header from "./components/Header/Header";
 import Home from "./views/Home/Home";
+import Details from "./views/Details/Details";
 //api for details https://restcountries.com/v3.1/all?fields=name,capital,population,flags,region,borders,subregion,currencies,languages,tld
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Header toogleTheme={toogleTheme} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="details/:name" element={<Details />} />
           <Route path="*" element={<p>404</p>} />
         </Routes>
       </BrowserRouter>

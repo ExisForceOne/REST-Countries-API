@@ -7,6 +7,7 @@ const StyledCard = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
   overflow: hidden;
   font-size: 1.4rem;
+  cursor: pointer;
 
   h3 {
     margin-bottom: 25px;
@@ -49,6 +50,9 @@ const StyledTextContainer = styled.div`
   padding: 35px;
 `;
 
+const numberWithDots = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const checkIfCapitalExist = (capital) => (Object.keys(capital).length ? capital : "None");
+
 export default function CountryCard({ data }) {
   return (
     <StyledCard>
@@ -58,13 +62,14 @@ export default function CountryCard({ data }) {
       <StyledTextContainer>
         <h3>{data.name.common}</h3>
         <p>
-          Population: <span>{data.population}</span>
+          Population: <span>{numberWithDots(data.population)}</span>
         </p>
         <p>
           Region: <span>{data.region}</span>
         </p>
         <p>
-          Capital: <span>{data.capital}</span>
+          Capital: <span>{checkIfCapitalExist(data.capital)}</span>
+          {/* some countries dont have capitals */}
         </p>
       </StyledTextContainer>
     </StyledCard>
