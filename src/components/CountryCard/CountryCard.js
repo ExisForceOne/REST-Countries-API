@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledCard = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -55,23 +56,25 @@ const checkIfCapitalExist = (capital) => (Object.keys(capital).length ? capital 
 
 export default function CountryCard({ data }) {
   return (
-    <StyledCard>
-      <StyledFlagContainer>
-        <img src={data.flags.svg} alt="flag" />
-      </StyledFlagContainer>
-      <StyledTextContainer>
-        <h3>{data.name.common}</h3>
-        <p>
-          Population: <span>{numberWithDots(data.population)}</span>
-        </p>
-        <p>
-          Region: <span>{data.region}</span>
-        </p>
-        <p>
-          Capital: <span>{checkIfCapitalExist(data.capital)}</span>
-          {/* some countries dont have capitals */}
-        </p>
-      </StyledTextContainer>
-    </StyledCard>
+    <Link to={`/details/${data.name.common.toLowerCase()}`}>
+      <StyledCard>
+        <StyledFlagContainer>
+          <img src={data.flags.svg} alt="flag" />
+        </StyledFlagContainer>
+        <StyledTextContainer>
+          <h3>{data.name.common}</h3>
+          <p>
+            Population: <span>{numberWithDots(data.population)}</span>
+          </p>
+          <p>
+            Region: <span>{data.region}</span>
+          </p>
+          <p>
+            Capital: <span>{checkIfCapitalExist(data.capital)}</span>
+            {/* some countries dont have capitals */}
+          </p>
+        </StyledTextContainer>
+      </StyledCard>
+    </Link>
   );
 }

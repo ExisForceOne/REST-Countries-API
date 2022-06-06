@@ -38,6 +38,11 @@ input::placeholder{
     color: inherit;
 }
 
+a {
+    text-decoration: none;
+    display: block;
+}
+
 `;
 
 export default GlobalStyles;

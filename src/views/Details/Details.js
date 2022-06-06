@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ArrowBack } from "@styled-icons/material-outlined/ArrowBack";
@@ -84,10 +84,22 @@ const StyledBackBtn = styled.button`
 
 export default function Details(props) {
   const params = useParams();
+  const [country, setCountry] = useState();
 
+  const fetchData = async () => {
+    const res = await fetch(
+      `https://restcountries.com/v3.1/name/${params.name}?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders`
+    );
+    const data = await res.json();
+    setCountry(...data);
+    console.log(data);
+  };
   useEffect(() => {
+    fetchData();
     console.log(params.name);
   }, []);
+
+  if (!country) return <p>loading</p>;
 
   return (
     <StyledDetails>
@@ -96,10 +108,10 @@ export default function Details(props) {
       </StyledBackBtn>
       <FlagAndTextContainer>
         <FlagContainer>
-          <img src="https://flagcdn.com/be.svg" alt="flag" />
+          <img src={country.flags.svg} alt="flag" />
         </FlagContainer>
         <div>
-          <h3>Belgium</h3>
+          <h3>{country.name.common}</h3>
           <TextContainer>
             <div>
               <p>
