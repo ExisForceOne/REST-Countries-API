@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import BackBtn from "../../components/BackBtn/BackBtn";
+import BorderCountries from "../../components/BorderCountries/BorderCountries";
+import numberWithCommas from "../../helpers/numberWithCommas";
+import getCurrencies from "../../helpers/getCurrencies";
+import getNativeCountryName from "../../helpers/getNativeCountryName";
 
 const StyledDetails = styled.div`
   margin: 65px auto;
@@ -32,13 +36,8 @@ const FlagAndTextContainer = styled.div`
   flex-direction: column;
   gap: 35px;
 
-  border: 2px solid yellow;
-
-  & > * {
-    border: 1px solid black;
-  }
-
   @media (min-width: 1150px) {
+    gap: 55px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -66,23 +65,7 @@ const TextContainer = styled.div`
   @media (min-width: 1150px) {
     flex-direction: row;
   }
-
-  & > * {
-    border: 1px solid pink;
-  }
 `;
-
-const numberWithDots = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-const getCurrencies = (obj) => {
-  const currencies = [];
-  for (const property in obj) {
-    currencies.push(obj[property].name);
-  }
-  return currencies.join(", ");
-};
-
-const getNativeCountryName = (obj) => obj[Object.keys(obj)[0]].common;
 
 export default function Details(props) {
   const params = useParams();
@@ -99,6 +82,7 @@ export default function Details(props) {
   useEffect(() => {
     fetchData();
     console.log(params.name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!country) return <p>loading</p>;
@@ -115,11 +99,10 @@ export default function Details(props) {
           <TextContainer>
             <div>
               <p>
-                {/* Native Name: <span>{country.name.nativeName[Object.keys(country.name.nativeName)[0]].common}</span> */}
                 Native Name: <span>{getNativeCountryName(country.name.nativeName)}</span>
               </p>
               <p>
-                Population: <span>{numberWithDots(country.population)}</span>
+                Population: <span>{numberWithCommas(country.population)}</span>
               </p>
               <p>
                 Region: <span>{country.region}</span>
@@ -143,6 +126,7 @@ export default function Details(props) {
               </p>
             </div>
           </TextContainer>
+          <BorderCountries borders={country.borders} />
         </div>
       </FlagAndTextContainer>
     </StyledDetails>
