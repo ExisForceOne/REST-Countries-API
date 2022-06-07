@@ -43,6 +43,10 @@ a {
     display: block;
 }
 
+a:visited {
+    color: inherit;
+}
+
 `;
 
 export default GlobalStyles;

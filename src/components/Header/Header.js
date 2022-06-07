@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Moon } from "@styled-icons/bootstrap/Moon";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -35,7 +36,9 @@ export default function Header(props) {
   return (
     <StyledHeader>
       <Wrapper>
-        <h1>Where in the world?</h1>
+        <Link to={"/"}>
+          <h1>Where in the world?</h1>
+        </Link>
         <button
           onClick={() => {
             props.toogleTheme();

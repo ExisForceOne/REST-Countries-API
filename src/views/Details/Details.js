@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { ArrowBack } from "@styled-icons/material-outlined/ArrowBack";
+import BackBtn from "../../components/BackBtn/BackBtn";
 
 const StyledDetails = styled.div`
   margin: 65px auto;
@@ -72,16 +72,6 @@ const TextContainer = styled.div`
   }
 `;
 
-const StyledBackBtn = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: ${({ theme }) => theme.boxShadow};
-  background-color: ${({ theme }) => theme.elementsColor};
-  color: ${({ theme }) => theme.textColor};
-  padding: 10px 40px;
-`;
-
 const numberWithDots = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 const getCurrencies = (obj) => {
@@ -115,9 +105,7 @@ export default function Details(props) {
 
   return (
     <StyledDetails>
-      <StyledBackBtn>
-        <ArrowBack size={20} /> Back
-      </StyledBackBtn>
+      <BackBtn />
       <FlagAndTextContainer>
         <FlagContainer>
           <img src={country.flags.svg} alt="flag" />
