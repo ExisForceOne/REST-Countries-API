@@ -21,6 +21,8 @@ export default function Home(props) {
     fetchCountries();
   }, []);
 
+  if (!allCountries) return <p>loading</p>;
+
   return (
     <>
       <Nav>
@@ -28,13 +30,9 @@ export default function Home(props) {
         <CustomSelect />
       </Nav>
       <CountriesContainer>
-        {allCountries ? (
-          allCountries.map((item, index) => {
-            return <CountryCard key={index} data={item} />;
-          })
-        ) : (
-          <p>loading</p>
-        )}
+        {allCountries.map((item, index) => {
+          return <CountryCard key={index} data={item} />;
+        })}
       </CountriesContainer>
     </>
   );

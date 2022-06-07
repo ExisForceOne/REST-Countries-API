@@ -52,11 +52,10 @@ const StyledTextContainer = styled.div`
 `;
 
 const numberWithDots = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-const checkIfCapitalExist = (capital) => (Object.keys(capital).length ? capital : "None");
 
 export default function CountryCard({ data }) {
   return (
-    <Link to={`/details/${data.name.common.toLowerCase()}`}>
+    <Link to={`/details/${data.name.common}`}>
       <StyledCard>
         <StyledFlagContainer>
           <img src={data.flags.svg} alt="flag" />
@@ -70,8 +69,7 @@ export default function CountryCard({ data }) {
             Region: <span>{data.region}</span>
           </p>
           <p>
-            Capital: <span>{checkIfCapitalExist(data.capital)}</span>
-            {/* some countries dont have capitals */}
+            Capital: <span>{data.capital.toString() || "None"}</span>
           </p>
         </StyledTextContainer>
       </StyledCard>

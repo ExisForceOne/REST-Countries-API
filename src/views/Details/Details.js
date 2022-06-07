@@ -82,6 +82,18 @@ const StyledBackBtn = styled.button`
   padding: 10px 40px;
 `;
 
+const numberWithDots = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+const getCurrencies = (obj) => {
+  const currencies = [];
+  for (const property in obj) {
+    currencies.push(obj[property].name);
+  }
+  return currencies.join(", ");
+};
+
+const getNativeCountryName = (obj) => obj[Object.keys(obj)[0]].common;
+
 export default function Details(props) {
   const params = useParams();
   const [country, setCountry] = useState();
@@ -92,7 +104,7 @@ export default function Details(props) {
     );
     const data = await res.json();
     setCountry(...data);
-    console.log(data);
+    console.log(...data);
   };
   useEffect(() => {
     fetchData();
@@ -115,30 +127,31 @@ export default function Details(props) {
           <TextContainer>
             <div>
               <p>
-                Native Name: <span>Belgie</span>
+                {/* Native Name: <span>{country.name.nativeName[Object.keys(country.name.nativeName)[0]].common}</span> */}
+                Native Name: <span>{getNativeCountryName(country.name.nativeName)}</span>
               </p>
               <p>
-                Population: <span>11,319,511</span>
+                Population: <span>{numberWithDots(country.population)}</span>
               </p>
               <p>
-                Region: <span>Europe</span>
+                Region: <span>{country.region}</span>
               </p>
               <p>
-                Sub Region: <span>Western Europe</span>
+                Sub Region: <span>{country.subregion || "None"}</span>
               </p>
               <p>
-                Capital: <span>Brussels</span>
+                Capital: <span>{country.capital.toString() || "None"}</span>
               </p>
             </div>
             <div>
               <p>
-                Top Level Domain: <span>.be</span>
+                Top Level Domain: <span>{country.tld.join(" ")}</span>
               </p>
               <p>
-                Currencies: <span>Euro</span>
+                Currencies: <span>{getCurrencies(country.currencies)}</span>
               </p>
               <p>
-                Languages: <span>Dutch, Flench, German</span>
+                Languages: <span>{Object.values(country.languages).join(", ")}</span>
               </p>
             </div>
           </TextContainer>
