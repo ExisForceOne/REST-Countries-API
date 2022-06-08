@@ -7,6 +7,11 @@ import numberWithCommas from "../../helpers/numberWithCommas";
 import getCurrencies from "../../helpers/getCurrencies";
 import getNativeCountryName from "../../helpers/getNativeCountryName";
 
+// `https://restcountries.com/v3.1/name/${name}?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders`
+
+const URL = "https://restcountries.com/v3.1/name";
+const FIELDS = "flags,name,population,region,capital,subregion,tld,currencies,languages,borders";
+
 const StyledDetails = styled.div`
   margin: 65px auto;
   width: ${({ theme }) => theme.wrapper};
@@ -72,9 +77,7 @@ export default function Details(props) {
   const [country, setCountry] = useState();
 
   const fetchData = async () => {
-    const res = await fetch(
-      `https://restcountries.com/v3.1/name/${name}?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders`
-    );
+    const res = await fetch(`${URL}/${name}?fields=${FIELDS}`);
     const data = await res.json();
     setCountry(...data);
   };

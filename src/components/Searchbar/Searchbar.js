@@ -18,11 +18,18 @@ const StyledSearchBar = styled.div`
   }
 `;
 
-export default function SearchBar(props) {
+export default function SearchBar({ searchParam, setSearchParam }) {
   return (
     <StyledSearchBar>
       <Search size={20} />
-      <input type="text" placeholder="Search for a country..." name="country" id="country" />
+      <input
+        type="text"
+        placeholder="Search for a country..."
+        name="country"
+        id="country"
+        value={searchParam}
+        onChange={(e) => setSearchParam(e.target.value)}
+      />
     </StyledSearchBar>
   );
 }
