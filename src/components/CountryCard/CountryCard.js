@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Card = styled.div`
+  max-width: 630px;
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
