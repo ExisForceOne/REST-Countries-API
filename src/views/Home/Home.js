@@ -12,7 +12,7 @@ const FIELDS = "flags,name,population,region,capital";
 export default function Home(props) {
   const [allCountries, setAllCountries] = useState("");
   const [searchParam, setSearchParam] = useState("");
-  const [filterParam, setFilterParam] = useState("Europe");
+  const [filterParam, setFilterParam] = useState("");
 
   const fetchCountries = async () => {
     const res = await fetch(`${URL}?fields=${FIELDS}`);
@@ -30,12 +30,13 @@ export default function Home(props) {
     <>
       <Nav>
         <SearchBar searchParam={searchParam} setSearchParam={setSearchParam} />
-        <CustomSelect />
+        <CustomSelect filterParam={filterParam} setFilterParam={setFilterParam} />
       </Nav>
       <CountriesContainer>
         {allCountries
           .filter(
-            (item) => item.name.common.toLowerCase().includes(searchParam.toLowerCase()) && item.region === filterParam
+            (item) =>
+              item.name.common.toLowerCase().includes(searchParam.toLowerCase()) && item.region.includes(filterParam)
           )
           .map((item, index) => {
             return <CountryCard key={index} data={item} />;

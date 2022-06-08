@@ -44,7 +44,7 @@ const StyledArrow = styled(Arrow)`
   transform: ${(props) => (props.rotated ? "rotate(180deg)" : "rotate(0)")};
 `;
 
-export default function CustomSelect(props) {
+export default function CustomSelect({ filterParam, setFilterParam }) {
   const [showOptions, setShowOptions] = useState(false);
 
   return (
@@ -53,17 +53,17 @@ export default function CustomSelect(props) {
         setShowOptions(!showOptions);
       }}
     >
-      Filter by Region
+      {filterParam || "Filter by region"}
       <StyledArrow rotated={showOptions} />
       {showOptions ? (
         <OptionsList
           onClick={(e) => {
-            console.log(e.target.textContent.toLowerCase());
-            //check if its LI, get text content and change state, select with close because of event bubling
+            if (e.target.tagName === "LI") setFilterParam(e.target.textContent);
+            //check if its LI, get text content and change state, select will close because of event bubling
           }}
         >
           <li>Africa</li>
-          <li>America</li>
+          <li>Americas</li>
           <li>Asia</li>
           <li>Europe</li>
           <li>Oceania</li>
