@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const StyledCard = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -54,25 +54,29 @@ const StyledTextContainer = styled.div`
 const numberWithDots = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 export default function CountryCard({ data }) {
+  const navigate = useNavigate();
+
   return (
-    <Link to={`/details/${data.name.common}`}>
-      <StyledCard>
-        <StyledFlagContainer>
-          <img src={data.flags.svg} alt="flag" />
-        </StyledFlagContainer>
-        <StyledTextContainer>
-          <h3>{data.name.common}</h3>
-          <p>
-            Population: <span>{numberWithDots(data.population)}</span>
-          </p>
-          <p>
-            Region: <span>{data.region}</span>
-          </p>
-          <p>
-            Capital: <span>{data.capital.toString() || "None"}</span>
-          </p>
-        </StyledTextContainer>
-      </StyledCard>
-    </Link>
+    <StyledCard
+      onClick={() => {
+        navigate(`/details/${data.name.common}`);
+      }}
+    >
+      <StyledFlagContainer>
+        <img src={data.flags.svg} alt="flag" />
+      </StyledFlagContainer>
+      <StyledTextContainer>
+        <h3>{data.name.common}</h3>
+        <p>
+          Population: <span>{numberWithDots(data.population)}</span>
+        </p>
+        <p>
+          Region: <span>{data.region}</span>
+        </p>
+        <p>
+          Capital: <span>{data.capital.toString() || "None"}</span>
+        </p>
+      </StyledTextContainer>
+    </StyledCard>
   );
 }

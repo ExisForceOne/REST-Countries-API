@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { whereAlpha3 } from "iso-3166-1";
+import { whereAlpha3 as changeISOtoFullCoutryName } from "iso-3166-1";
 
 const StyledBtn = styled.button`
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -18,10 +17,7 @@ const FlexContainer = styled.div`
 `;
 
 export default function BorderCountries({ borders }) {
-  useEffect(() => {
-    console.log(borders.length);
-    borders.forEach((item) => console.log(whereAlpha3(item).country));
-  }, []);
+  let navigate = useNavigate();
 
   if (!borders.length) return null;
 
@@ -31,9 +27,15 @@ export default function BorderCountries({ borders }) {
       <FlexContainer>
         {borders.map((item, index) => {
           return (
-            <Link key={index} to={`/details/${whereAlpha3(item).country}`}>
-              <StyledBtn>{whereAlpha3(item).country}</StyledBtn>
-            </Link>
+            <StyledBtn
+              onClick={() => {
+                navigate(`/details/${changeISOtoFullCoutryName(item).country}`);
+                navigate(0);
+              }}
+              key={index}
+            >
+              {changeISOtoFullCoutryName(item).country}
+            </StyledBtn>
           );
         })}
       </FlexContainer>
