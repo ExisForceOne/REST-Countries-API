@@ -68,22 +68,21 @@ const TextContainer = styled.div`
 `;
 
 export default function Details(props) {
-  const params = useParams();
+  const { name } = useParams();
   const [country, setCountry] = useState();
 
   const fetchData = async () => {
     const res = await fetch(
-      `https://restcountries.com/v3.1/name/${params.name}?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders`
+      `https://restcountries.com/v3.1/name/${name}?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders`
     );
     const data = await res.json();
     setCountry(...data);
-    console.log(...data);
   };
   useEffect(() => {
+    setCountry();
     fetchData();
-    console.log(params.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [name]);
 
   if (!country) return <p>loading</p>;
 

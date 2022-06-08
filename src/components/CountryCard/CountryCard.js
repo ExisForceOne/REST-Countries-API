@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const StyledCard = styled.div`
+const Card = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
@@ -35,7 +35,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const StyledFlagContainer = styled.div`
+const FlagContainer = styled.div`
   height: 200px;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ const StyledFlagContainer = styled.div`
   }
 `;
 
-const StyledTextContainer = styled.div`
+const TextContainer = styled.div`
   padding: 35px;
 `;
 
@@ -57,15 +57,15 @@ export default function CountryCard({ data }) {
   const navigate = useNavigate();
 
   return (
-    <StyledCard
+    <Card
       onClick={() => {
         navigate(`/details/${data.name.common}`);
       }}
     >
-      <StyledFlagContainer>
+      <FlagContainer>
         <img src={data.flags.svg} alt="flag" />
-      </StyledFlagContainer>
-      <StyledTextContainer>
+      </FlagContainer>
+      <TextContainer>
         <h3>{data.name.common}</h3>
         <p>
           Population: <span>{numberWithDots(data.population)}</span>
@@ -76,7 +76,7 @@ export default function CountryCard({ data }) {
         <p>
           Capital: <span>{data.capital.toString() || "None"}</span>
         </p>
-      </StyledTextContainer>
-    </StyledCard>
+      </TextContainer>
+    </Card>
   );
 }

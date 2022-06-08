@@ -30,7 +30,6 @@ export default function BorderCountries({ borders }) {
             <StyledBtn
               onClick={() => {
                 navigate(`/details/${changeISOtoFullCoutryName(item).country}`);
-                navigate(0);
               }}
               key={index}
             >
