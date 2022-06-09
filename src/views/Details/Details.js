@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+
 import BackBtn from "../../components/BackBtn/BackBtn";
 import BorderCountries from "../../components/BorderCountries/BorderCountries";
 import numberWithCommas from "../../helpers/numberWithCommas";
 import getCurrencies from "../../helpers/getCurrencies";
 import getNativeCountryName from "../../helpers/getNativeCountryName";
+import Loading from "../../components/Loading/Loading";
 
 const URL = "https://restcountries.com/v3.1/name";
 const FIELDS = "flags,name,population,region,capital,subregion,tld,currencies,languages,borders";
@@ -88,7 +90,7 @@ export default function Details(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
 
-  if (!country) return <p>loading</p>;
+  if (!country) return <Loading />;
 
   return (
     <StyledDetails>

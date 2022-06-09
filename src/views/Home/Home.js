@@ -5,6 +5,7 @@ import SearchBar from "../../components/Searchbar/Searchbar";
 import CustomSelect from "../../components/CustomSelect/CustomSelect";
 import CountriesContainer from "../../components/CountriesContainer/CountriesContainer";
 import CountryCard from "../../components/CountryCard/CountryCard";
+import Loading from "../../components/Loading/Loading";
 
 const URL = "https://restcountries.com/v3.1/all";
 const FIELDS = "flags,name,population,region,capital";
@@ -24,7 +25,7 @@ export default function Home(props) {
     fetchCountries();
   }, []);
 
-  if (!allCountries) return <p>loading</p>;
+  if (!allCountries) return <Loading />;
 
   return (
     <>
