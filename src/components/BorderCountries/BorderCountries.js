@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { whereAlpha3 as changeISOtoFullCoutryName } from "iso-3166-1";
 
 const StyledBtn = styled.button`
+  padding: 10px 40px;
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
   border-radius: ${({ theme }) => theme.borderRadius};
-  padding: 10px 40px;
 `;
 
 const FlexContainer = styled.div`

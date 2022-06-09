@@ -10,7 +10,8 @@ const StyledNotFound = styled.div`
 export default function NotFound(props) {
   return (
     <StyledNotFound>
-      <p>Sorry page not found (╯°□°）╯︵ ┻━┻</p>
+      <p>Sorry page not found</p>
+      <p>(╯°□°）╯︵ ┻━┻</p>
     </StyledNotFound>
   );
 }

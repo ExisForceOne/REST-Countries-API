@@ -3,13 +3,13 @@ import { ArrowIosDownward as Arrow } from "@styled-icons/evaicons-solid/ArrowIos
 import { useState } from "react";
 
 const Select = styled.button`
+  max-width: 320px;
   position: relative;
   display: flex;
-  gap: 20px;
   justify-content: space-between;
+  gap: 20px;
   font-weight: 600;
   padding: 25px 35px;
-  max-width: 320px;
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
@@ -27,16 +27,16 @@ const OptionsList = styled.ul`
   left: 0;
   right: 0;
   padding: 25px 0;
+  bottom: -10px;
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   list-style: none;
-  bottom: -10px;
   transform: translateY(100%);
 
   li {
-    text-align: left;
     padding: 0px 35px;
+    text-align: left;
   }
 `;
 

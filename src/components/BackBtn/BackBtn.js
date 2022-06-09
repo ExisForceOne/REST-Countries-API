@@ -6,10 +6,10 @@ const StyledBackBtn = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px 40px;
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
-  padding: 10px 40px;
 `;
 
 export default function BackBtn(props) {

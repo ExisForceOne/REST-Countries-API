@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 const Card = styled.div`
   max-width: 630px;
+  font-size: 1.4rem;
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
   border-radius: ${({ theme }) => theme.borderRadius};
-  overflow: hidden;
-  font-size: 1.4rem;
   cursor: pointer;
 
   h3 {

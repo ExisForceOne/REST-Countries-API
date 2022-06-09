@@ -4,8 +4,8 @@ const StyledGridContainer = styled.div`
   margin: 0 auto;
   width: ${({ theme }) => theme.wrapper};
   display: grid;
-  grid-gap: 55px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 55px;
 `;
 
 export default function CountriesContainer(props) {

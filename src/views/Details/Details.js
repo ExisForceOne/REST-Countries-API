@@ -7,8 +7,6 @@ import numberWithCommas from "../../helpers/numberWithCommas";
 import getCurrencies from "../../helpers/getCurrencies";
 import getNativeCountryName from "../../helpers/getNativeCountryName";
 
-// `https://restcountries.com/v3.1/name/${name}?fields=flags,name,population,region,capital,subregion,tld,currencies,languages,borders`
-
 const URL = "https://restcountries.com/v3.1/name";
 const FIELDS = "flags,name,population,region,capital,subregion,tld,currencies,languages,borders";
 
@@ -42,10 +40,10 @@ const FlagAndTextContainer = styled.div`
   gap: 35px;
 
   @media (min-width: 1150px) {
-    gap: 55px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 55px;
     & > div {
       flex: 1;
     }

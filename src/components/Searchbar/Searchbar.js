@@ -6,10 +6,10 @@ const StyledSearchBar = styled.div`
   flex: 1;
   align-items: center;
   padding-left: 25px;
+  max-width: 500px;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.elementsColor};
   box-shadow: ${({ theme }) => theme.boxShadow};
-  max-width: 500px;
 
   input {
     padding: 25px;

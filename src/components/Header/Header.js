@@ -3,10 +3,10 @@ import { Moon } from "@styled-icons/bootstrap/Moon";
 import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
+  padding: 50px 0;
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.elementsColor};
   color: ${({ theme }) => theme.textColor};
-  padding: 50px 0;
 
   @media (min-width: 750px) {
     padding: 30px 0;
@@ -17,19 +17,20 @@ const StyledHeader = styled.header`
   }
 
   button {
-    font-size: 1.2em;
-    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
   }
 `;
 
 const Wrapper = styled.div`
-  margin: 0 auto;
-  width: ${({ theme }) => theme.wrapper};
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
+  width: ${({ theme }) => theme.wrapper};
+  gap: 10px;
 `;
 
 export default function Header(props) {
