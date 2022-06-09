@@ -6,7 +6,7 @@ import { lightTheme, darkTheme } from "./styles/Themes";
 import Header from "./components/Header/Header";
 import Home from "./views/Home/Home";
 import Details from "./views/Details/Details";
-//api for details https://restcountries.com/v3.1/all?fields=name,capital,population,flags,region,borders,subregion,currencies,languages,tld
+import NotFound from "./views/NotFound/NotFound";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="details/:name" element={<Details />} />
-          <Route path="*" element={<p>404</p>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
