@@ -1,4 +1,4 @@
-import { useState } from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
@@ -9,7 +9,7 @@ import Details from "./views/Details/Details";
 import NotFound from "./views/NotFound/NotFound";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useLocalStorage("isDarkMode", false);
 
   const toogleTheme = () => {
     setIsDarkMode(!isDarkMode);
