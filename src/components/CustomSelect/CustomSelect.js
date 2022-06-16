@@ -47,6 +47,11 @@ const StyledArrow = styled(Arrow)`
 export default function CustomSelect({ filterParam, setFilterParam }) {
   const [showOptions, setShowOptions] = useState(false);
 
+  const changeRegion = (e) => {
+    if (e.target.tagName === "LI") setFilterParam(e.target.dataset.region);
+    //check if its LI, get text content and change state, select will close because of event bubling
+  };
+
   return (
     <Select
       onClick={() => {
@@ -56,17 +61,13 @@ export default function CustomSelect({ filterParam, setFilterParam }) {
       {filterParam || "Filter by region"}
       <StyledArrow rotated={showOptions} />
       {showOptions ? (
-        <OptionsList
-          onClick={(e) => {
-            if (e.target.tagName === "LI") setFilterParam(e.target.textContent);
-            //check if its LI, get text content and change state, select will close because of event bubling
-          }}
-        >
-          <li>Africa</li>
-          <li>Americas</li>
-          <li>Asia</li>
-          <li>Europe</li>
-          <li>Oceania</li>
+        <OptionsList onClick={(e) => changeRegion(e)}>
+          {!filterParam || <li data-region="">All</li>}
+          <li data-region="Africa">Africa</li>
+          <li data-region="Americas">Americas</li>
+          <li data-region="Asia">Asia</li>
+          <li data-region="Europe">Europe</li>
+          <li data-region="Oceania">Oceania</li>
         </OptionsList>
       ) : null}
     </Select>
