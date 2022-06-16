@@ -23,6 +23,7 @@ export default function SearchBar({ searchParam, setSearchParam }) {
     <StyledSearchBar>
       <Search size={20} />
       <input
+        size={1} // fix min width
         type="text"
         placeholder="Search for a country..."
         name="country"
